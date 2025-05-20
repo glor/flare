@@ -6,7 +6,7 @@ Flare is a lightweight, portable tool that turns Markdown files into executable 
 
 ## tl;dr
 1. Copy `flare` to your repository/project.
-2. Add `#/bin/env ./flare` to the top of your `<document>.md` file.
+2. Add `#!/bin/env ./flare` to the top of your `<document>.md` file.
 3. Run `chmod +x <document>.md` to make it executable
 4. List commands with `./<document>.md` and run them with `./<document>.md <subcommand>`
 
