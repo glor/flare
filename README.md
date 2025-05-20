@@ -4,6 +4,12 @@
 
 Flare is a lightweight, portable tool that turns Markdown files into executable notebooks. Run code blocks directly from your documentation with zero dependencies beyond standard Unix/Linux tools.
 
+## tl;dr
+1. Copy `flare` to your repository/project.
+2. Add `#/bin/env ./flare` to the top of your `<document>.md` file.
+3. Run `chmod +x <document>.md` to make it executable
+4. List commands with `./<document>.md` and run them with `./<document>.md <subcommand>`
+
 ## Features
 
 - **Portable**: Works on any Unix/Linux system without additional dependencies
@@ -159,3 +165,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - https://github.com/0atman/blaze
 - https://github.com/casey/just
+
+Why "flare"? Because its like a blaze but sudden and usually brief.
