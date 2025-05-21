@@ -1,6 +1,6 @@
 # Flare: Run your README.md like a Makefile
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: CC0](https://img.shields.io/badge/License-CC0-blue.svg)](LICENSE)
 
 Flare merges documentation and scripts and lets you run code blocks directly from your `README.md`. Flare is lightweight, portable and has zero dependencies beyond standard Unix/Linux tools.
 
