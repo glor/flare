@@ -4,27 +4,18 @@
 
 Flare merges documentation and scripts and lets you run code blocks directly from your `README.md`. Flare is lightweight, portable and has zero dependencies beyond standard Unix/Linux tools.
 
-## tl;dr
-Run your README.md:
-1. Copy `flare` to your repository/project.
-2. In your README.md (or another document), add:
-   ````markdown
-   ```bash [setup]{/bin/bash}
-   echo "Setting up environment..."
-   ```
-   ````
-3. Run commands (uses README.md by default):
-   ```bash
-   ./flare setup
-   ```
-
-
-Create an executable notebook:
-
-1. Copy `flare` to your repository/project.
-2. Add `#!/bin/env -S ./flare -f` to the top of your `<document>.md` file.
-3. Run `chmod +x <document>.md` to make it executable
-4. List commands with `./<document>.md` and run them with `./<document>.md <subcommand>`
+## tl;dr - Run your README.md
+Add run targets to your README.md (or another document):
+````markdown
+## Run me
+```bash [setup]{/bin/bash}
+echo "Setting up environment..."
+```
+````
+Copy flare to your project and run commands (README.md is the default):
+```bash
+./flare setup
+```
 
 ## Why
 Keeping documentation and project automization in sync is important for users and new developers. Flare makes it easy to avoid out-of-sync documentation and reduces redunant information by merging both into one document.
@@ -178,13 +169,16 @@ Flare is designed to be extremely portable:
 
 ## Contributing
 
-Contributions are welcome! Feel free to open issues or submit pull requests.
+This project is considered finished. Fixes and improvements are welcome, especially if they improve usability and portability.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the CC0 License which is similar to public domain. This means that you can use flare however you'd like and without citing my name. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
-- Inspired by the need for simple, dependency-free executable documentation
-- Thanks to all contributors who help make Flare better
+- make
+- https://github.com/0atman/blaze
+- https://github.com/casey/just
+
+Why "flare"? Because its like a blaze but sudden and usually brief.
