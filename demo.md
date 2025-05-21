@@ -22,6 +22,9 @@ echo "hi"
 
 Here, `test` is the subcommand and this code will only be executed when you provide this subcommand as an argument to the notebook.
 
-```bash [test]{/bin/bash}
-echo "hi"
+## Python
+You can also run Python:
+
+```python [test]{/usr/bin/python3}
+print("Running tests...")
 ```

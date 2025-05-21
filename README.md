@@ -4,6 +4,28 @@
 
 Flare merges documentation and scripts and lets you run code blocks directly from your `README.md`. Flare is lightweight, portable and has zero dependencies beyond standard Unix/Linux tools.
 
+## tl;dr
+Run your README.md:
+1. Copy `flare` to your repository/project.
+2. In your README.md (or another document), add:
+   ````markdown
+   ```bash [setup]{/bin/bash}
+   echo "Setting up environment..."
+   ```
+   ````
+3. Run commands (uses README.md by default):
+   ```bash
+   ./flare setup
+   ```
+
+
+Create an executable notebook:
+
+1. Copy `flare` to your repository/project.
+2. Add `#!/bin/env -S ./flare -f` to the top of your `<document>.md` file.
+3. Run `chmod +x <document>.md` to make it executable
+4. List commands with `./<document>.md` and run them with `./<document>.md <subcommand>`
+
 ## Why
 Keeping documentation and project automization in sync is important for users and new developers. Flare makes it easy to avoid out-of-sync documentation and reduces redunant information by merging both into one document.
 
@@ -17,42 +39,14 @@ Flare acts as a command runner and is not meant to replace build tools but to ma
 - **README-first**: By default works with your project's README.md
 - **Permissive**: Flare is licensed under CC0. Do with it as you will.
 
-## Basic Usage
-
-1. Create a markdown file (e.g., `README.md`) with tagged code blocks:
-
-```markdown
-# My Project
-## Setup
-```bash [setup]{/bin/bash}
-echo "Setting up environment..."
-```
-## Run Tests
-```python [test]{/usr/bin/python3}
-print("Running tests...")
-```
-```
-
-2. Run commands from your notebook:
-
-```bash
-# List available commands (uses README.md by default)
-./flare
-
-# Run a specific command
-./flare setup
-./flare test
-
-# Use a different markdown file
-./flare -f notebook.md
-./flare -f notebook.md setup
-```
-
 ## Installation
 
 ### Global installation
 To run `flare` directly from command line, put `flare` in some location that is in your `path` environment variable.
-If you are using bash, you can install flare by running `./flare install` in this repo.
+If you are using bash, you can install flare by running (from within this repository):
+```bash
+./flare install
+```
 This executes the following script:
 
 ```bash [install]{/bin/bash}
@@ -121,10 +115,12 @@ Where:
 - `[command-name]`: The subcommand used to execute this block
 - `{/path/to/interpreter}`: The interpreter to use (optional, defaults to `/bin/sh`)
 
-Most markdown parsers and renderers remove command and interpreter so your document looks just like it used to. For end-user documentation, it is a good idea do add a code block on how to run a cell.
+Most markdown parsers and renderers remove command and interpreter so your document looks just like it used to. For end-user documentation, it is a good idea to add a code block on how to run a cell directly above.
 
 ## Usage
-
+```bash
+./flare -h
+```
 ```
 Usage: flare [options] [subcommand]
 
