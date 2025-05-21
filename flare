@@ -10,24 +10,65 @@ VERSION="0.1.0"
 print_usage() {
   echo "Flare - A portable markdown notebook runner v$VERSION"
   echo ""
-  echo "Usage: flare [markdown_file] [subcommand]"
+  echo "Usage: flare [options] [subcommand]"
+  echo ""
+  echo "Options:"
+  echo "  -f FILE    Specify a markdown file to use (default: README.md)"
+  echo "  -h         Show this help message"
   echo ""
   echo "If no subcommand is provided, lists all available subcommands in the notebook."
   echo "If a subcommand is provided, executes all code blocks tagged with that subcommand."
   echo ""
   echo "Examples:"
-  echo "  flare notebook.md         # List all available commands in notebook.md"
-  echo "  flare notebook.md test    # Run all code blocks tagged with [test]"
+  echo "  flare                     # List commands in README.md"
+  echo "  flare test                # Run [test] blocks in README.md"
+  echo "  flare -f notebook.md      # List commands in notebook.md"
+  echo "  flare -f notebook.md test # Run [test] blocks in notebook.md"
 }
 
-# Check if there are enough arguments
-if [ $# -lt 1 ]; then
-  print_usage
-  exit 1
-fi
+# Find README.md (case insensitive)
+find_readme() {
+  for file in README.md README.MD Readme.md readme.md; do
+    if [ -f "$file" ]; then
+      echo "$file"
+      return 0
+    fi
+  done
+  echo "README.md"  # Default even if not found
+}
 
-NOTEBOOK=$1
-COMMAND=$2
+# Parse command line arguments
+NOTEBOOK=$(find_readme)  # Default to README.md
+COMMAND=""
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -f)
+      shift
+      if [ $# -eq 0 ]; then
+        echo "Error: -f option requires a file argument."
+        exit 1
+      fi
+      NOTEBOOK="$1"
+      shift
+      ;;
+    -h)
+      print_usage
+      exit 0
+      ;;
+    -*)
+      echo "Error: Unknown option: $1"
+      print_usage
+      exit 1
+      ;;
+    *)
+      # First non-option argument is the command
+      COMMAND="$1"
+      shift
+      break
+      ;;
+  esac
+done
 
 # Check if notebook file exists
 if [ ! -f "$NOTEBOOK" ]; then

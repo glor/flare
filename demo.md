@@ -1,4 +1,4 @@
-#!/usr/bin/env ./flare
+#!/usr/bin/env -S ./flare -f
 # Demo for Flare
 ## Setup
 To set up flare, just copy the flare script to your project and do:
@@ -13,9 +13,15 @@ Flare let's you run markdown files with code blocks like this:
 ```
 
 ### Test
+```bash
+flare -f demo.md test
+```
 ```bash [test]{/bin/bash}
 echo "hi"
 ```
 
 Here, `test` is the subcommand and this code will only be executed when you provide this subcommand as an argument to the notebook.
 
+```bash [test]{/bin/bash}
+echo "hi"
+```
